@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Você ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(-45deg,#ff9ec4,#ffc2d1,#ffe5ec,#ffd6ff);
+background-size:400% 400%;
+animation:fundo 12s ease infinite;
+overflow:hidden;
+}
+
+@keyframes fundo{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.card{
+background:rgba(255,255,255,.92);
+padding:40px;
+border-radius:25px;
+width:90%;
+max-width:700px;
+text-align:center;
+box-shadow:0 10px 35px rgba(0,0,0,.2);
+animation:surge 1.5s;
+}
+
+@keyframes surge{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+h1{
+color:#ff3d7f;
+margin-bottom:20px;
+font-size:40px;
+}
+
+#texto{
+font-size:22px;
+line-height:1.8;
+color:#444;
+min-height:250px;
+}
+
+.c{
+position:absolute;
+color:#ff4f81;
+animation:cair linear infinite;
+user-select:none;
+}
+
+@keyframes cair{
+0%{
+transform:translateY(-10vh);
+opacity:1;
+}
+100%{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h1>❤️ Para Você ❤️</h1>
+
+<div id="texto"></div>
+
+</div>
+
+<script>
+
+const mensagem=`Se você abriu esse link, é porque alguém queria te lembrar de uma coisa...
+
+Você é uma pessoa simplesmente incrível.
+
+Seu sorriso tem um jeito especial de deixar tudo mais bonito.
+
+Você é linda, inteligente, carinhosa, divertida e tem uma energia que faz qualquer lugar ficar melhor.
+
+Às vezes talvez você nem perceba o quanto consegue alegrar o dia das pessoas só sendo você.
+
+Nunca deixe ninguém fazer você duvidar do seu valor.
+
+Continue sendo essa pessoa maravilhosa, porque pessoas como você são raras.
+
+Espero que quando terminar de ler isso você esteja sorrindo...
+
+Porque você merece todos os motivos do mundo para ser feliz. ❤️`;
+
+let i=0;
+
+function escrever(){
+if(i<mensagem.length){
+document.getElementById("texto").innerHTML+=mensagem.charAt(i);
+i++;
+setTimeout(escrever,35);
+}
+}
+
+escrever();
+
+function coracao(){
+const c=document.createElement("div");
+c.className="c";
+c.innerHTML="❤️";
+c.style.left=Math.random()*100+"vw";
+c.style.fontSize=(15+Math.random()*30)+"px";
+c.style.animationDuration=(4+Math.random()*5)+"s";
+document.body.appendChild(c);
+
+setTimeout(()=>{
+c.remove();
+},9000);
+}
+
+setInterval(coracao,250);
+
+</script>
+
+</body>
+</html>
